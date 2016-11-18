@@ -1,0 +1,50 @@
+Pessoas
+
+id
+Nome;
+E-mail;
+Telefone;
+Endereço;
+ rua
+ numero
+ bairo
+ complemento
+ cidade
+ estado
+ pais
+
+Data de nascimento;
+Sexo;
+CPF.
+
+
+Quartos
+
+id
+tipo de quarto
+numero
+andar
+cama
+tv
+banheiro
+frigobar
+sacada
+jacuzi
+estado = dissponivel/ocupado
+
+
+tipo de quarto
+
+id
+nome
+preço
+
+
+reserva
+
+id
+quarto
+pessoa
+periodo
+
+

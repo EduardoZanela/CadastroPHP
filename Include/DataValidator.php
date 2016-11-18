@@ -6,8 +6,19 @@ class DataValidator{
 
         if(!empty($pessoa->nome) && !empty($pessoa->email) && !empty($pessoa->telefone) && !empty($pessoa->dataNascimento)
             && !empty($pessoa->sexo) && !empty($pessoa->cpf) && !empty($pessoa->rua)  && !empty($pessoa->rua) && !empty($pessoa->numero)
-            && !empty($pessoa->bairro) && !empty($pessoa->complemento) && !empty($pessoa->cidade) && !empty($pessoa->cidade)
+            && !empty($pessoa->bairro) && !empty($pessoa->complemento) && !empty($pessoa->cidade)
             && !empty($pessoa->estado) && !empty($pessoa->pais)){
+            return false;
+        }
+
+        return true;
+    }
+
+    public function validarQuarto($quarto){
+
+        if(!empty($quarto->tipoQuarto) && !empty($quarto->numero) && !empty($quarto->andar) && !empty($quarto->cama)
+            && !empty($quarto->tv) && !empty($quarto->banheiro) && !empty($quarto->frigobar)  && !empty($quarto->sacada) && !empty($quarto->jacuzi)
+            && !empty($quarto->estado) && !empty($quarto->descricao)){
             return false;
         }
 

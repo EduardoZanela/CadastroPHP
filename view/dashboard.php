@@ -91,6 +91,12 @@
 					case 'c_quarto':
 						require_once('c_quarto.php');
 						break;
+					case 'c_reserva':
+						require_once('c_reserva.php');
+						break;
+					case 'c_tipo':
+						require_once('c_tipo.php');
+						break;
 				}
 			?>
         </div>

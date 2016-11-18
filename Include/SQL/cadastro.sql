@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 18, 2016 at 11:04 PM
+-- Generation Time: Nov 18, 2016 at 11:08 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -60,7 +60,8 @@ CREATE TABLE IF NOT EXISTS `quartos` (
   `sacada` int(11) NOT NULL,
   `jacuzi` varchar(100) COLLATE utf8_bin NOT NULL,
   `estado` int(11) NOT NULL,
-  `cama` varchar(100) COLLATE utf8_bin NOT NULL
+  `cama` varchar(100) COLLATE utf8_bin NOT NULL,
+  `descricao` varchar(250) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------

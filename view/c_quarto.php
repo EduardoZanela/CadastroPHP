@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
 <h2>Cadastro de Quarto</h2>
 <form action="" method="post">
 	<!-- @TODO gerar dropdown do "tipoQuarto" -->
@@ -17,4 +15,3 @@
 	<input type="submit" value="Submit" />
 	<input type="reset" />
 </form>
-</html>

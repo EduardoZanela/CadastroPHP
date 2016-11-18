@@ -16,7 +16,7 @@ if(isset($_GET['operation'])){
             $pessoa->email = $_POST['email'];
             $pessoa->telefone = $_POST['telefone'];
             $pessoa->dataNascimento = $_POST['dataNascimento'];
-            $pessoa->sexo = $_POST = $_POST['sexo'];
+            $pessoa->sexo = $_POST['sexo'];
             $pessoa->cpf = $_POST['cpf'];
             $pessoa->rua = $_POST['rua'];
             $pessoa->numero = $_POST['numero'];

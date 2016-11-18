@@ -78,7 +78,18 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Dashboard</h1>
+			<?php
+				if (!isset($_GET['p']))
+					return;
 
+				$page = $_GET['p'];
+
+				switch($page) {
+					case 'c_quarto':
+						require_once('c_quarto.php');
+						break;
+				}
+			?>
         </div>
     </div>
 </div>

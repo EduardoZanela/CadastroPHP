@@ -85,6 +85,9 @@
 				$page = $_GET['p'];
 
 				switch($page) {
+					case 'c_pessoa':
+						require_once('c_pessoa.php');
+						break;
 					case 'c_quarto':
 						require_once('c_quarto.php');
 						break;

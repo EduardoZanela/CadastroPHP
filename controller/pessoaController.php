@@ -41,6 +41,22 @@ if(isset($_GET['operation'])){
 
 
             break;
+        case 'listar':
+
+            $array = array();
+            $userDao = new pessoaDAO();
+            $array = $userDao->listaPessoa();
+
+            if(empty($array)){
+                $_SESSION['listarError'] = utf8_encode("Tabela Vazia");
+                header("location: ../view/dashboard.php");
+            } else{
+                $_SESSION['pessoasArray'] = $array;
+
+                header("location:../view/ctrl_user.php");
+            }
+
+            break;
         default:
             echo "Operação Inexistente";
             break;

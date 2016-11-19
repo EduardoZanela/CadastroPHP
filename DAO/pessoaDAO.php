@@ -31,7 +31,7 @@ class pessoaDAO {
 
             $status = $this->connection->prepare("Insert Into pessoas(id, nome, email, telefone,"
                 . "dataNascimento, sexo, cpf, rua, numero, bairro, complemento, cidade, estado, pais)"
-                . " values(null,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                . " values(null,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
             $status->bindValue(1, $user->nome);
             $status->bindValue(2, $user->email);

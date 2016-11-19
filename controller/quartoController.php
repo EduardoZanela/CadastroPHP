@@ -16,7 +16,7 @@ if(isset($_GET['operation'])){
             $quarto->numero = $_POST['numero'];
             $quarto->andar = $_POST['andar'];
             $quarto->cama = $_POST['cama'];
-            $quarto->tv = $_POST = $_POST['tv'];
+            $quarto->tv = $_POST['tv'];
             $quarto->banheiro = $_POST['banheiro'];
             $quarto->frigobar = $_POST['frigobar'];
             $quarto->sacada = $_POST['sacada'];
@@ -35,10 +35,27 @@ if(isset($_GET['operation'])){
             $quartoDao->insertQuarto($quarto);
 
 
-            header("location:../view/dashboard.php");
+            //header("location:../view/dashboard.php");
 
 
             break;
+        case 'listar':
+
+            $array = array();
+            $userDao = new quartoDAO();
+            $array = $userDao->listaQuartos();
+
+            if(empty($array)){
+                $_SESSION['listarError'] = utf8_encode("Tabela Vazia");
+                header("location: ../view/dashboard.php");
+            } else{
+                $_SESSION['quartosArray'] = $array;
+
+                header("location:../view/ctrl_user.php");
+            }
+
+            break;
+
         default:
             echo "Operação Inexistente";
             break;

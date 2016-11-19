@@ -31,21 +31,19 @@
 
                 $status = $this->connection->prepare("Insert Into quartos(id, tipoQuarto, numero, andar,"
                     . "cama, tv, banheiro, frigobar, sacada, jacuzi, estado, descricao)"
-                    . " values(null,?,?,?,?,?,?,?,?,?,?,?)");
+                    . " values(null,?,?,?,?,?,?,?,?,?,?, ?)");
 
                 $status->bindValue(1, $user->tipoQuarto);
                 $status->bindValue(2, $user->numero);
                 $status->bindValue(3, $user->andar);
-                $status->bindValue(4, $user->numero);
-                $status->bindValue(5, $user->andar);
-                $status->bindValue(6, $user->cama);
-                $status->bindValue(7, $user->tv);
-                $status->bindValue(8, $user->banheiro);
-                $status->bindValue(9, $user->frigobar);
-                $status->bindValue(10, $user->sacada);
-                $status->bindValue(11, $user->jacuzi);
-                $status->bindValue(12, $user->estado);
-                $status->bindValue(13, $user->descricao);
+                $status->bindValue(4, $user->cama);
+                $status->bindValue(5, $user->tv);
+                $status->bindValue(6, $user->banheiro);
+                $status->bindValue(7, $user->frigobar);
+                $status->bindValue(8, $user->sacada);
+                $status->bindValue(9, $user->jacuzi);
+                $status->bindValue(10, $user->estado);
+                $status->bindValue(11, $user->descricao);
 
                 $status->execute();
 

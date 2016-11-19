@@ -25,4 +25,13 @@ class DataValidator{
         return true;
     }
 
+    public function validarTipoQuarto($tipoQuarto){
+
+        if(!empty($tipoQuarto->nome) && !empty($tipoQuarto->preco)){
+            return false;
+        }
+
+        return true;
+    }
+
 }

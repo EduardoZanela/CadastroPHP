@@ -16,7 +16,7 @@ if(isset($_GET['operation'])){
             $quarto->numero = $_POST['numero'];
             $quarto->andar = $_POST['andar'];
             $quarto->cama = $_POST['cama'];
-            $quarto->tv = $_POST = $_POST['tv'];
+            $quarto->tv = $_POST['tv'];
             $quarto->banheiro = $_POST['banheiro'];
             $quarto->frigobar = $_POST['frigobar'];
             $quarto->sacada = $_POST['sacada'];
@@ -35,7 +35,7 @@ if(isset($_GET['operation'])){
             $quartoDao->insertQuarto($quarto);
 
 
-            header("location:../view/dashboard.php");
+            //header("location:../view/dashboard.php");
 
 
             break;

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.3
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Nov 18, 2016 at 11:08 PM
--- Server version: 5.6.24
--- PHP Version: 5.6.8
+-- Host: 127.0.0.1
+-- Generation Time: 19-Nov-2016 às 01:16
+-- Versão do servidor: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `cadastro`
@@ -23,11 +23,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pessoas`
+-- Estrutura da tabela `pessoas`
 --
 
-CREATE TABLE IF NOT EXISTS `pessoas` (
-  `id` int(4) NOT NULL,
+CREATE TABLE `pessoas` (
+  `id` int(11) NOT NULL,
   `nome` varchar(100) COLLATE utf8_bin NOT NULL,
   `email` varchar(100) COLLATE utf8_bin NOT NULL,
   `telefone` varchar(100) COLLATE utf8_bin NOT NULL,
@@ -46,12 +46,12 @@ CREATE TABLE IF NOT EXISTS `pessoas` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `quartos`
+-- Estrutura da tabela `quartos`
 --
 
-CREATE TABLE IF NOT EXISTS `quartos` (
+CREATE TABLE `quartos` (
   `id` int(11) NOT NULL,
-  `tipoQuarto` varchar(100) COLLATE utf8_bin NOT NULL,
+  `tipoQuarto` int(11) NOT NULL,
   `numero` int(11) NOT NULL,
   `andar` int(11) NOT NULL,
   `tv` varchar(100) COLLATE utf8_bin NOT NULL,
@@ -67,13 +67,13 @@ CREATE TABLE IF NOT EXISTS `quartos` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reserva`
+-- Estrutura da tabela `reserva`
 --
 
-CREATE TABLE IF NOT EXISTS `reserva` (
+CREATE TABLE `reserva` (
   `id` int(11) NOT NULL,
-  `quarto` int(11) NOT NULL,
-  `pessoa` varchar(100) COLLATE utf8_bin NOT NULL,
+  `quarto_id` int(11) NOT NULL,
+  `pessoa_id` int(11) NOT NULL,
   `periodoInicio` datetime NOT NULL,
   `periodoFim` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -81,36 +81,14 @@ CREATE TABLE IF NOT EXISTS `reserva` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tipoQuarto`
+-- Estrutura da tabela `tipoquarto`
 --
 
-CREATE TABLE IF NOT EXISTS `tipoQuarto` (
+CREATE TABLE `tipoquarto` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) COLLATE utf8_bin NOT NULL,
   `preco` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(100) COLLATE utf8_bin NOT NULL,
-  `email` varchar(100) COLLATE utf8_bin NOT NULL,
-  `user` varchar(100) COLLATE utf8_bin NOT NULL,
-  `id_nivel_acesso` int(11) NOT NULL,
-  `senha` varchar(100) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `nome`, `email`, `user`, `id_nivel_acesso`, `senha`) VALUES
-(1, 'Eduardo', 'eduardo@gmail.com', 'eduardo@gmail.com', 1, 'teste12');
 
 --
 -- Indexes for dumped tables
@@ -126,55 +104,40 @@ ALTER TABLE `pessoas`
 -- Indexes for table `quartos`
 --
 ALTER TABLE `quartos`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tipoQuarto` (`tipoQuarto`);
 
 --
 -- Indexes for table `reserva`
 --
 ALTER TABLE `reserva`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `quarto_id` (`quarto_id`),
+  ADD KEY `pessoa_id` (`pessoa_id`);
+
+--
+-- Indexes for table `tipoquarto`
+--
+ALTER TABLE `tipoquarto`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tipoQuarto`
---
-ALTER TABLE `tipoQuarto`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- Constraints for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `pessoas`
---
-ALTER TABLE `pessoas`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `quartos`
+-- Limitadores para a tabela `quartos`
 --
 ALTER TABLE `quartos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  ADD CONSTRAINT `quartos_ibfk_1` FOREIGN KEY (`tipoQuarto`) REFERENCES `tipoquarto` (`id`) ON DELETE CASCADE;
+
 --
--- AUTO_INCREMENT for table `reserva`
+-- Limitadores para a tabela `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `tipoQuarto`
---
-ALTER TABLE `tipoQuarto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`quarto_id`) REFERENCES `quartos` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `reserva_ibfk_2` FOREIGN KEY (`pessoa_id`) REFERENCES `pessoas` (`id`) ON DELETE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

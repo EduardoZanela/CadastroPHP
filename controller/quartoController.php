@@ -35,7 +35,7 @@ if(isset($_GET['operation'])){
             $quartoDao->insertQuarto($quarto);
 
 
-            //header("location:../view/dashboard.php");
+            header("location:../view/dashboard.php");
 
 
             break;

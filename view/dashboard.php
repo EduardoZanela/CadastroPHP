@@ -28,6 +28,8 @@
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <script src="../Include/js/ie-emulation-modes-warning.js"></script>
+    <script src="../Include/js/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="../Include/css/jquery.modal.min.css" type="text/css" media="screen" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -47,16 +49,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><?php echo $_SESSION['userName']?></a>
+            <a class="navbar-brand" href="#">Hotel Brazileirinhas!!</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"> Bem vindo <?php echo $_SESSION['userName']?></a></li>
                 <li><a href="../Include/logout.php">logout</a></li>
-                <li><a href="#"></a></li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
         </div>
     </div>
 </nav>
@@ -65,19 +64,20 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="?">Home<span class="sr-only">(current)</span></a></li>
-                <li><a href="?p=quartos">Quartos</a></li>
-                <li><a href="?p=reservas">Reservas</a></li>
+                <li><a href="?">Home</a></li>
+                <li class="<?php if($_GET['p'] == 'pessoas'){ echo 'active';}?>"><a href="?p=pessoas">Quartos</a></li>
+                <li class="<?php if($_GET['p'] == 'quartos'){ echo 'active';}?>"><a href="?p=quartos">Quartos</a></li>
+                <li class="<?php if($_GET['p'] == 'reservas'){ echo 'active';}?>"><a href="?p=reservas">Reservas</a></li>
             </ul>
             <ul class="nav nav-sidebar">
-                <li><a href="?p=c_pessoa">Cadastro de pessoas</a></li>
-                <li><a href="?p=c_quarto">Cadastro de quartos</a></li>
-                <li><a href="?p=c_reserva">Cadastro de reservas</a></li>
-                <li><a href="?p=c_tipo">Cadastro de tipo de quarto</a></li>
+                <li class="<?php if($_GET['p'] == 'c_pessoa'){ echo 'active';}?>"><a href="?p=c_pessoa">Cadastro de pessoas</a></li>
+                <li class="<?php if($_GET['p'] == 'c_quarto'){ echo 'active';}?>"><a href="?p=c_quarto">Cadastro de quartos</a></li>
+                <li class="<?php if($_GET['p'] == 'c_reserva'){ echo 'active';}?>"><a href="?p=c_reserva">Cadastro de reservas</a></li>
+                <li class="<?php if($_GET['p'] == 'c_tipo'){ echo 'active';}?>"><a href="?p=c_tipo">Cadastro de tipo de quarto</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Dashboard</h1>
+            <h1 class="page-header">Seu Dashboard <?php echo $_SESSION['userName']?></h1>
 			<?php
 				if (!isset($_GET['p']))
 					return;
@@ -103,6 +103,7 @@
     </div>
 </div>
 
+
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
@@ -111,6 +112,6 @@
 <script src="../Include/js/bootstrap.min.js"></script>
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 <script src="../Include/js/holder.js"></script>
+
 </body>
 </html>
-

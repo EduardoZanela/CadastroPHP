@@ -1,10 +1,10 @@
 <?php
 
+session_start();
+
 include '../DAO/pessoaDAO.php';
 include '../model/PessoasBean.php';
 include '../Include/DataValidator.php';
-
-session_start();
 
 if(isset($_GET['operation'])){
     switch ($_GET['operation']){
@@ -37,7 +37,7 @@ if(isset($_GET['operation'])){
             $userDao->insertUser($pessoa);
 
 
-            header("location:../view/dashboard.php");
+            //header("location:../view/dashboard.php");
 
 
             break;

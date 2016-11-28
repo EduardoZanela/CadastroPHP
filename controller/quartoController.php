@@ -15,13 +15,6 @@ if(isset($_GET['operation'])){
             $quarto->tipoQuarto = $_POST['tipoQuarto'];
             $quarto->numero = $_POST['numero'];
             $quarto->andar = $_POST['andar'];
-            $quarto->cama = $_POST['cama'];
-            $quarto->tv = $_POST['tv'];
-            $quarto->banheiro = $_POST['banheiro'];
-            $quarto->frigobar = $_POST['frigobar'];
-            $quarto->sacada = $_POST['sacada'];
-            $quarto->jacuzi = $_POST['jacuzi'];
-            $quarto->estado = $_POST['estado'];
             $quarto->descricao = $_POST['descricao'];
 
             $validator = new DataValidator();
@@ -35,7 +28,7 @@ if(isset($_GET['operation'])){
             $quartoDao->insertQuarto($quarto);
 
 
-            header("location:../view/dashboard.php");
+            //header("location:../view/dashboard.php");
 
 
             break;

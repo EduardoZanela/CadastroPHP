@@ -2,8 +2,16 @@
 
     class QuartoBean{
         private $id;
-        private $nome;
-        private $preco;
+        private $tipoQuarto;
+        private $numero;
+        private $andar;
+        private $cama;
+        private $tv;
+        private $banheiro;
+        private $sacada;
+        private $jacuzi;
+        private $estado;
+        private $descricao;
 
         //Metodos magicos para atribuir/buscar propriedades
         public function __construct() {}

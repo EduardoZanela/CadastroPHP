@@ -1,3 +1,6 @@
+<?php
+	include_once("../Include/security.php");
+?>
 <h2>Cadastro de Reservas</h2>
 <form action="../controller/reservaController.php?operation=cadastrar" method="post" class="form-group">
 	<!-- @TODO gerar dropdown do "tipoQuarto" -->

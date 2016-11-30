@@ -1,3 +1,6 @@
+<?php
+	include_once("../Include/security.php");
+?>
 <h2>Cadastro de Pessoas</h2>
 <form action="../controller/pessoaController.php?operation=cadastrar" method="post" class="form-group">
 	<input name="nome" placeholder="nome" required="" class="form-control" />

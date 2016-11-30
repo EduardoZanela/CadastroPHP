@@ -1,3 +1,6 @@
+<?php
+	include_once("../Include/security.php");
+?>
 <table class="table">
   <thead>
     <tr>

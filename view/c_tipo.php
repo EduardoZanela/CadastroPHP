@@ -1,3 +1,6 @@
+<?php  
+	include_once("../Include/security.php");
+?>
 <h2>Cadastro de Tipo de Quarto</h2>
 <form action="../controller/tipoQuartoController.php?operation=cadastrar" method="post" class="form-group">
 	<input name="nome" placeholder="nome" required="" class="form-control" />

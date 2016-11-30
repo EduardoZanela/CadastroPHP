@@ -4,14 +4,22 @@
 	<select class="form-control" name="quarto">
 	<?php
 		include_once('../DAO/quartoDAO.php');
-
+		include_once('../DAO/tipoQuartoDAO.php');
 
 		$array = array();
-		$tipoQuarto = new quartoDAO();
-		$array = $tipoQuarto->listaQuartos();
+		$Quarto = new quartoDAO();
+		$array = $Quarto->listaQuartos();
 
 		foreach ($array as $a){ ?>
-		<option value="<?php echo $a['id']; ?>">Quarto Numero <?php echo $a['numero'];?></option>
+		<option value="<?php echo $a['id']; ?>">Quarto Numero <?php
+			echo $a['numero'];
+			$arrayTipoQuarto = array();
+			$tipoQuarto = new tipoQuartoDAO();
+			$arrayTipoQuarto = $tipoQuarto->findById($a['tipoQuarto']);
+			foreach ($arrayTipoQuarto as $c){
+				echo " Tipo ".$c['nome'];
+			}
+		?></option>
 		<?php }
 
 	 ?>
@@ -25,7 +33,7 @@
 		 $bb = $aa->listaPessoa();
 
 		 foreach ($bb as $b){ ?>
-		 <option value="<?php echo $b['id']; ?>"><?php echo $b['nome'];?></option>
+		 <option value="<?php echo $b['id']; ?>"><?php echo $b['nome']. " Id " . $b['id'];?></option>
 		 <?php }
 
 		?>

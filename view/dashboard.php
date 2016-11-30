@@ -64,10 +64,11 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="?">Home</a></li>
-                <li class="<?php if($_GET['p'] == 'pessoas'){ echo 'active';}?>"><a href="?p=pessoas">Quartos</a></li>
+                <li class="<?php if (!isset($_GET['p'])){ echo 'active';}?>"><a href="#">Home</a></li>
+                <li class="<?php if($_GET['p'] == 'pessoas'){ echo 'active';}?>"><a href="?p=pessoas">Pessoas</a></li>
                 <li class="<?php if($_GET['p'] == 'quartos'){ echo 'active';}?>"><a href="?p=quartos">Quartos</a></li>
                 <li class="<?php if($_GET['p'] == 'reservas'){ echo 'active';}?>"><a href="?p=reservas">Reservas</a></li>
+                <li class="<?php if($_GET['p'] == 'tipoQuarto'){ echo 'active';}?>"><a href="?p=tipoQuarto">Tipo de Quarto</a></li>
             </ul>
             <ul class="nav nav-sidebar">
                 <li class="<?php if($_GET['p'] == 'c_pessoa'){ echo 'active';}?>"><a href="?p=c_pessoa">Cadastro de pessoas</a></li>
@@ -79,9 +80,10 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Seu Dashboard <?php echo $_SESSION['userName']?></h1>
 			<?php
-				if (!isset($_GET['p']))
+				if (!isset($_GET['p'])){
+          require_once('listaReservas.php');
 					return;
-
+        }
 				$page = $_GET['p'];
 
 				switch($page) {
@@ -97,6 +99,18 @@
 					case 'c_tipo':
 						require_once('c_tipo.php');
 						break;
+          case 'pessoas':
+            require_once('listaPessoas.php');
+            break;
+          case 'quartos':
+            require_once('listaQuartos.php');
+            break;
+          case 'reservas':
+            require_once('listaReservas.php');
+            break;
+          case 'tipoQuarto':
+            require_once('listaTipoQuarto.php');
+            break;
 				}
 			?>
         </div>

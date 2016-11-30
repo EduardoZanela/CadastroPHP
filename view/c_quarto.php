@@ -14,6 +14,7 @@
 		<?php }
 
 	 ?>
+ </select>
 	<input type="number" name="numero" placeholder="numero" required="" class="form-control" />
 	<input name="andar" placeholder="andar" required="" class="form-control" />
 	<input name="descricao" placeholder="descricao" required="" class="form-control" />

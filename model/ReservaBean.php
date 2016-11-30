@@ -1,11 +1,11 @@
 <?php
 
-    class QuartoBean{
+    class ReservaBean{
         private $id;
-        private $tipoQuarto;
-        private $numero;
-        private $andar;
-        private $descricao;
+        private $quarto;
+        private $pessoa;
+        private $periodoInicio;
+        private $periodoFim;
 
         //Metodos magicos para atribuir/buscar propriedades
         public function __construct() {}

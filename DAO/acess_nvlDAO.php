@@ -1,6 +1,6 @@
 <?php
 
-include '../Persistence/ConnectionDB.php';
+include_once('../Persistence/ConnectionDB.php');
 
 class acess_nvlDAO {
     private $connection = null;

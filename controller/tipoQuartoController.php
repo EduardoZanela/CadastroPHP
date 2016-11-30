@@ -26,7 +26,7 @@ if(isset($_GET['operation'])){
             $quartoDao->insertTipoQuarto($tipoQuarto);
 
 
-            //header("location:../view/dashboard.php");
+            header("location:../view/dashboard.php");
 
 
             break;
@@ -40,7 +40,7 @@ if(isset($_GET['operation'])){
                 $_SESSION['listarError'] = utf8_encode("Tabela Vazia");
                 header("location: ../view/dashboard.php");
             } else{
-                $_SESSION['quartosArray'] = $array;
+                $_SESSION['tipoQuartoArray'] = $array;
 
                 header("location:../view/ctrl_user.php");
             }

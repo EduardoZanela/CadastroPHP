@@ -1,8 +1,8 @@
 <?php
-
     include_once('../Persistence/ConnectionDB.php');
 
-    class tipoQuartoDAO{
+    class reservaDAO{
+
         private $connection = null;
 
         public function __construct(){
@@ -11,7 +11,7 @@
 
         public  function findById($id){
             try{
-                $status = $this->connection->prepare("Select * from tipoQuarto where id = $id");
+                $status = $this->connection->prepare("Select * from reserva where id = $id");
 
                 $status->execute();
 
@@ -26,9 +26,9 @@
             }
         }
 
-        public  function listaTipoQuarto(){
+        public  function listaReserva(){
             try{
-                $status = $this->connection->prepare("Select * from tipoQuarto");
+                $status = $this->connection->prepare("Select * from reserva");
 
                 $status->execute();
 
@@ -43,15 +43,21 @@
             }
         }
 
-        public function insertTipoQuarto($user){
+        public function insertReserva($user){
             try{
 
-                $status = $this->connection->prepare("Insert Into tipoQuarto(id, nome, preco)"
-                    . " values(null,?,?)");
+                $status = $this->connection->prepare("Insert Into reserva(id, quarto_id, pessoa_id, periodoInicio,"
+                    . "periodoFim) values(null,?,?,?,?)");
 
-                $status->bindValue(1, $user->nome);
-                $status->bindValue(2, $user->preco);
+                echo "$user->quarto<br>";
+                echo "$user->pessoa<br>";
+                echo "$user->periodoInicio<br>";
+                echo "$user->periodoFim<br>";
 
+                $status->bindValue(1, $user->quarto);
+                $status->bindValue(2, $user->pessoa);
+                $status->bindValue(3, $user->periodoInicio);
+                $status->bindValue(4, $user->periodoFim);
 
                 $status->execute();
 

@@ -34,4 +34,13 @@ class DataValidator{
         return true;
     }
 
+    public function validarReserva($reserva){
+
+        if(!empty($reserva->periodoInicio) && !empty($reserva->periodoFim)){
+            return false;
+        }
+
+        return true;
+    }
+
 }

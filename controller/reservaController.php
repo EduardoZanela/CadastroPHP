@@ -1,7 +1,7 @@
 <?php
 
-include '../DAO/quartoDAO.php';
-include '../model/QuartoBean.php';
+include '../DAO/reservaDAO.php';
+include '../model/ReservaBean.php';
 include '../Include/DataValidator.php';
 
 session_start();
@@ -10,22 +10,22 @@ if(isset($_GET['operation'])){
     switch ($_GET['operation']){
         case 'cadastrar':
 
-            $quarto = new QuartoBean();
+            $reserva = new ReservaBean();
 
-            $quarto->tipoQuarto = $_POST['tipoQuarto'];
-            $quarto->numero = $_POST['numero'];
-            $quarto->andar = $_POST['andar'];
-            $quarto->descricao = $_POST['descricao'];
+            $reserva->quarto = $_POST['quarto'];
+            $reserva->pessoa = $_POST['pessoa'];
+            $reserva->periodoInicio = $_POST['periodoInicio'];
+            $reserva->periodoFim = $_POST['periodoFim'];
 
             $validator = new DataValidator();
 
-            if(!$validator->validarQuarto($quarto)){
+            if(!$validator->validarReserva($reserva)){
                 $_SESSION['cadastroError'] = utf8_encode("Todos os campos são Obrigatorios");
                 header("location: ../view/dashboard.php");
             }
 
-            $quartoDao = new quartoDAO();
-            $quartoDao->insertQuarto($quarto);
+            $reservaDao = new reservaDAO();
+            $reservaDao->insertReserva($reserva);
 
 
             header("location:../view/dashboard.php");
@@ -35,14 +35,14 @@ if(isset($_GET['operation'])){
         case 'listar':
 
             $array = array();
-            $userDao = new quartoDAO();
-            $array = $userDao->listaQuartos();
+            $userDao = new ReservaBean();
+            $array = $userDao->listaReserva();
 
             if(empty($array)){
                 $_SESSION['listarError'] = utf8_encode("Tabela Vazia");
                 header("location: ../view/dashboard.php");
             } else{
-                $_SESSION['quartosArray'] = $array;
+                $_SESSION['reservasArray'] = $array;
 
                 header("location:../view/ctrl_user.php");
             }

@@ -1,5 +1,5 @@
 <?php
-include '../Persistence/ConnectionDB.php';
+include_once('../Persistence/ConnectionDB.php');
 
 class usersDAO {
     private $connection = null;

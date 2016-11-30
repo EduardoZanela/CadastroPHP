@@ -37,7 +37,7 @@ if(isset($_GET['operation'])){
             $userDao->insertUser($pessoa);
 
 
-            //header("location:../view/dashboard.php");
+            header("location:../view/dashboard.php");
 
 
             break;

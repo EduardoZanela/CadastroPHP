@@ -9,11 +9,14 @@
 		include_once('../DAO/tipoQuartoDAO.php');
 
 		$array = array();
-		$tipoQuarto = new tipoQuartoDAO();
-		$array = $tipoQuarto->listaTipoQuarto();
+		$quarto = new quartoDAO();
+		$array = $quarto->listaQuarto();
 
+		?>
+		<option disabled>Tipo de Quarto</option>
+		<?php
 		foreach ($array as $a){ ?>
-		<option value="<?php echo $a['id']; ?>"><?php echo $a['nome'];?></option>
+		<option value="<?php echo $a['tipoQuarto']; ?>"><?php echo $a['nome'];?></option>
 		<?php }
 
 	 ?>

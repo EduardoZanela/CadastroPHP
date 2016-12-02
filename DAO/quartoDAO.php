@@ -29,7 +29,7 @@
         public  function listaQuartos(){
             try{
                 $status = $this->connection->prepare(
-                    'SELECT tq.nome, q.numero, q.andar, q.descricao
+                    'SELECT tq.id, tq.nome, q.numero, q.andar, q.descricao
                     FROM quartos q
                     LEFT JOIN tipoquarto tq ON
                     q.tipoQuarto = tq.id'

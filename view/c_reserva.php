@@ -13,15 +13,15 @@
 		$Quarto = new quartoDAO();
 		$array = $Quarto->listaQuartos();
 
+		?>
+		<option disabled>Numero - Quarto</option>
+		<?php
 		foreach ($array as $a){ ?>
-		<option value="<?php echo $a['id']; ?>">Quarto Numero <?php
-			echo $a['numero'];
-			$arrayTipoQuarto = array();
-			$tipoQuarto = new tipoQuartoDAO();
-			$arrayTipoQuarto = $tipoQuarto->findById($a['tipoQuarto']);
-			foreach ($arrayTipoQuarto as $c){
-				echo " Tipo ".$c['nome'];
-			}
+		<option value="<?php echo $a['id']; ?>"> <?php
+			echo $a['numero'] . ' - ';
+			echo $a['nome'];
+			//print_r($a);
+			
 		?></option>
 		<?php }
 

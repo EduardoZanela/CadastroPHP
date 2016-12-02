@@ -11,7 +11,7 @@
 
         public  function findById($id){
             try{
-                $status = $this->connection->prepare("Select * from tipoQuarto where id = $id");
+                $status = $this->connection->prepare("Select * from tipoquarto where id = $id");
 
                 $status->execute();
 

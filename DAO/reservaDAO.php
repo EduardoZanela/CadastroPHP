@@ -26,7 +26,33 @@
             }
         }
 
-        public  function listaReserva(){
+        public function listaReserva() {
+            try{
+                $status = $this->connection->prepare(
+                    'SELECT q.numero, tq.nome as tqnome, p.nome as pnome, r.periodoInicio, r.periodoFim
+                    FROM reserva r
+                    LEFT JOIN quartos q ON
+                    r.quarto_id = q.id
+                    LEFT JOIN tipoquarto tq ON
+                    q.tipoQuarto = tq.id
+                    LEFT JOIN pessoas p ON
+                    p.id = r.pessoa_id'
+                );
+
+                $status->execute();
+
+                $array = array();
+                $array = $status->fetchAll(PDO::FETCH_ASSOC);
+
+                $this->connection = null;
+
+                return $array;
+            } catch (PDOException $e){
+                echo utf8_decode('Ocorrema erros ao busca o usuário' . $e);
+            }
+        }
+
+        public  function listaReserva2(){
             try{
                 $status = $this->connection->prepare("Select * from reserva");
 

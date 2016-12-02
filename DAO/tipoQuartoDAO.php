@@ -28,7 +28,7 @@
 
         public  function listaTipoQuarto(){
             try{
-                $status = $this->connection->prepare("Select * from tipoQuarto");
+                $status = $this->connection->prepare("Select * from tipoquarto");
 
                 $status->execute();
 

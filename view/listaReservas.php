@@ -45,28 +45,12 @@
         <tr>
           <td>
             <?php
-              $quartoArray = array();
-              $quartoDao = new quartoDAO();
-              $quartoArray = $quartoDao->findById($pessoa['quarto_id']);
-              foreach ($quartoArray as $quarto){
-                echo "Numero " . $quarto['numero'];
-                $tipoQuartoArray = array();
-                $tipoQuartoDao = new tipoQuartoDAO();
-                $tipoQuartoArray = $tipoQuartoDao->findById($quarto['tipoQuarto']);
-                foreach ($tipoQuartoArray as $tipo){
-                  echo " Tipo " . $tipo['nome'];
-                }
-              }
+              	echo $pessoa['numero'];
             ?>
           </td>
           <td>
             <?php
-              $pessoaArray = array();
-              $pessoaDao = new pessoaDAO();
-              $pessoaArray = $pessoaDao->findById($pessoa['pessoa_id']);
-              foreach ($pessoaArray as $a){
-                echo $a['nome'];
-              }
+							echo $pessoa['pnome']; 
             ?>
           </td>
           <td><?php echo $pessoa['periodoInicio'];?></td>

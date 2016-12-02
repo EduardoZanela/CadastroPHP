@@ -19,19 +19,10 @@
       $quartosDao = new quartoDAO();
       $quartosArray = $quartosDao->listaQuartos();
 
-
       foreach ($quartosArray as $pessoa){ ?>
+
         <tr>
-          <td>
-            <?php
-              $tipoQuartoArray = array();
-              $tipoQuartoDao = new tipoQuartoDAO();
-              $tipoQuartoArray = $tipoQuartoDao->findById($pessoa['tipoQuarto']);
-              foreach ($tipoQuartoArray as $tipo){
-                echo $tipo['nome'];
-              }
-            ?>
-          </td>
+          <td><?php echo $pessoa['nome'];?></td>
           <td><?php echo $pessoa['numero'];?></td>
           <td><?php echo $pessoa['andar'];?></td>
           <td><?php echo $pessoa['descricao'];?></td>

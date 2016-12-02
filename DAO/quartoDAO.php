@@ -28,12 +28,17 @@
 
         public  function listaQuartos(){
             try{
-                $status = $this->connection->prepare("Select * from quartos");
+                $status = $this->connection->prepare(
+                    'SELECT tq.nome, q.numero, q.andar, q.descricao
+                    FROM quartos q
+                    LEFT JOIN tipoquarto tq ON
+                    q.tipoQuarto = tq.id'
+                );
 
                 $status->execute();
 
                 $array = array();
-                $array = $status->fetchAll();
+                $array = $status->fetchAll(PDO::FETCH_ASSOC);
 
                 $this->connection = null;
 

@@ -46,7 +46,7 @@
         public function insertTipoQuarto($user){
             try{
 
-                $status = $this->connection->prepare("Insert Into tipoQuarto(id, nome, preco)"
+                $status = $this->connection->prepare("Insert Into tipoquarto(id, nome, preco)"
                     . " values(null,?,?)");
 
                 $status->bindValue(1, $user->nome);
